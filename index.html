@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наш маленький секрет ❤️ </title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #170b16, #401629, #190d19);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.page {
+  width: 90%;
+  max-width: 480px;
+  padding: 35px 25px;
+  border: 1px solid #b56b83;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 0 40px #0006;
+  animation: appear 1s ease;
+}
+
+h1 {
+  color: #ffc2d3;
+  font-size: 30px;
+}
+
+p {
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #d68ba4;
+  background: #fff;
+  font-size: 19px;
+  text-align: center;
+  outline: none;
+  margin: 15px 0;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #d65b83;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #f080a3;
+  transform: scale(1.03);
+}
+
+#error {
+  color: #ff9eb9;
+  min-height: 25px;
+}
+
+#birthday {
+  display: none;
+}
+
+.heart {
+  font-size: 45px;
+  animation: beat 1.2s infinite;
+}
+
+.photo {
+  font-size: 65px;
+  margin: 15px;
+}
+
+.small {
+  color: #e9a9bd;
+  font-style: italic;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+@keyframes appear {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.floating {
+  position: fixed;
+  top: -30px;
+  animation: fall 5s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ПЕРВАЯ СТРАНИЦА -->
+
+<div class="page" id="login">
+  <div class="heart">♡</div>
+
+  <h1>Наш маленький секрет</h1>
+
+  <p>
+    У меня для тебя кое-что приготовлено...
+    <br>
+    Но сначала нужно доказать, что ты помнишь
+    нашу самую важную дату ❤️ 
+  </p>
+
+  <h3>Когда начались наши отношения?</h3>
+
+  <input
+    type="text"
+    id="password"
+    placeholder="ДДММГГ"
+    maxlength="6"
+    inputmode="numeric"
+  >
+
+  <button onclick="checkPassword()">
+    Открыть мой секрет ❤️ 
+  </button>
+
+  <p id="error"></p>
+
+  <p class="small">Только для одного особенного человека ♡</p>
+</div>
+
+
+<!-- ВТОРАЯ СТРАНИЦА -->
+
+<div class="page" id="birthday">
+
+  <div class="heart">❤️ </div>
+
+  <h1>С ДНЁМ РОЖДЕНИЯ, МОЯ ЛЮБИМАЯ!</h1>
+
+  <div class="photo">🎂 🌹 </div>
+
+  <p>
+    Сегодня особенный день, ведь именно в этот
+    день родился человек, который стал для меня
+    очень дорогим.
+  </p>
+
+  <p>
+    Я хочу пожелать тебе бесконечного счастья,
+    искренних улыбок, крепкого здоровья и
+    исполнения всех твоих желаний.
+  </p>
+
+  <p>
+    Пусть в твоей жизни будет как можно больше
+    прекрасных моментов, поводов смеяться
+    и людей, которые искренне тебя любят.
+  </p>
+
+  <p>
+    Спасибо тебе за то, что ты есть.
+    За твою улыбку, за твои глаза, за каждый
+    момент рядом с тобой.
+  </p>
+
+  <h2 style="color:#ffb4cb;">
+    Я очень сильно тебя люблю ❤️ 
+  </h2>
+
+  <p>
+    И если бы мне пришлось выбирать снова,
+    я бы снова выбрал тебя.
+    Ты — мой самый любимый человек.
+  </p>
+
+  <div class="heart">♡</div>
+
+  <p class="small">
+    С любовью, твой любимый ❤️ 
+  </p>
+
+</div>
+
+
+<script>
+function checkPassword() {
+  const password = document
+    .getElementById("password")
+    .value.replace(/\s/g, "");
+
+  const error = document.getElementById("error");
+
+  if (password === "010925") {
+
+    document.getElementById("login").style.display = "none";
+
+    document.getElementById("birthday").style.display = "block";
+
+    document.body.style.background =
+      "linear-gradient(135deg, #3b1028, #8b3155, #230d25)";
+
+    createHearts();
+
+  } else {
+    error.innerText = "Неправильно, попробуй ещё раз 🥺 ❤️ ";
+  }
+}
+
+function createHearts() {
+  const symbols = ["❤️ ", "💕 ", "💗 ", "♡", "🌸 "];
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "floating";
+    heart.innerText =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }, 350);
+}
+
+document.getElementById("password").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") checkPassword();
+});
+</script>
+
+</body>
+</html>
